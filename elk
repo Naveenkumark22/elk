@@ -1,0 +1,174 @@
+dynamic mapping---> mapping not created mapping is created when the data is inserted
+
+
+
+Match Query:
+
+Used to search the part of the sentence
+
+wont look for exact match
+
+
+
+  {
+    "title": "Introduction to Elasticsearch",
+    "content": "Elasticsearch is a distributed search and analytics engine.",
+    "category": "technology",
+    "status": "published",
+    "price": 25,
+    "user": "john_doe"
+  }
+  -----------------------
+  {
+  "query": {
+    "match": {
+      "title": "Elasticsearch"
+    }
+  }
+}
+
+ ----------------------------------------------------- 
+
+Term Query:
+
+Looks for exact match in the field
+
+not used to search as parts
+
+
+ {
+    "title": "Introduction to Elasticsearch",
+    "content": "Elasticsearch is a distributed search and analytics engine.",
+    "category": "technology",
+    "status": "published",
+    "price": 25,
+    "user": "john_doe"
+  }
+
+---
+{
+  "query": {
+    "term": {
+      "status": "published"
+    }
+  }
+}
+
+
+--------------------------------------------------
+
+Range Query:
+
+used to fetch in range
+
+
+ {
+    "title": "Introduction to Elasticsearch",
+    "content": "Elasticsearch is a distributed search and analytics engine.",
+    "category": "technology",
+    "status": "published",
+    "price": 25,
+    "user": "john_doe"
+  }
+  
+  -------
+
+{
+  "query": {
+    "range": {
+      "price": {
+        "gte": 20,
+        "lte": 30
+      }
+    }
+  }
+}
+
+--------------------------------------------------
+
+Bool Query:
+
+The bool query in Elasticsearch is a powerful and flexible way to combine multiple queries using boolean logic	
+
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "title": "Elasticsearch" } },
+        { "range": { "price": { "gte": 20 } } }
+      ],
+      "must_not": [
+        { "term": { "status": "draft" } }
+      ],
+      "should": [
+        { "term": { "category": "technology" } }
+      ]
+    }
+  }
+}
+
+--------------------------------------------------------- Wild card query :
+
+It is used to for searching aspects 
+
+{
+  "query": {
+    "wildcard": {
+      "user": "john*"
+    }
+  }
+}
+
+-----------------------------------------
+
+Mapping for index
+
+
+{
+  "my-index-000001" : {
+    "mappings" : {
+      "properties" : {
+        "age" : {
+          "type" : "integer"
+        },
+        "email" : {
+          "type" : "keyword"
+        },
+        "employee-id" : {
+          "type" : "keyword",
+          "index" : false
+        },
+        "name" : {
+          "type" : "text"
+        }
+      }
+    }
+  }
+  
+  
+   "index" : false---> It indicats we dont use the field for searching
+   
+    "type" : "keyword"----> single tooken , cannot search into parts , looks for exact mattching
+	
+	
+	 "type" : "text"--> can be searched as parts of he sentence
+	
+ ------------------------------------------------
+ 
+ 
+ Types in fields
+ 
+ 
+ boolean
+composite
+date
+double
+geo_point
+ip
+keyword
+long
+lookup
+
+--------------------------------
+ 
+ 
