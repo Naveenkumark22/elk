@@ -1,0 +1,93 @@
+Metrics Aggregations
+
+Sum: Calculates the total sum of a numeric field.
+Average: Calculates the average value of a numeric field.
+Min and Max: Calculates the minimum or maximum value of a numeric field.
+Stats: Calculates multiple metrics (count, sum, min, max, avg) for a numeric field
+
+---------------
+OVERALL :
+{
+"aggs":{
+"name need to be displayed":{
+  "sum" ,"avg" ,"stats" :
+{
+  "field" : " ----field name---" 
+}
+}
+}
+------------------------------------
+
+
+
+SUM:
+
+{
+  "aggs": {
+    "total_sales": {  ---------> NAME NEED TO BE DISPLAYED IN THE RESPONSE
+      "sum": {       --------->FUNCTION
+        "field": "sales_amount"    ----> FIELD NAME
+      }
+    }
+}
+}
+
+
+MIN AND MAX;
+
+{
+  "aggs": {
+    "min_temperature": {
+      "min": {
+        "field": "temperature"
+      }
+    },
+    "max_temperature": {
+      "max": {
+        "field": "temperature"
+      }
+    }
+  }
+}
+
+
+------------------------------------------------------------
+
+Bucket Aggregations:
+Terms: Groups documents based on the values of a field (e.g., total sales per product category).
+Date Histogram: Groups documents into time intervals (e.g., total sales per month).
+Histogram: Groups documents into fixed-size numeric intervals (e.g., total sales per price range).
+
+
+
+TERMS:
+
+Terms Aggregation:
+Groups documents based on the values of a specified field.
+Example: Total sales per product category.
+
+
+{
+  "aggs": {
+    "sales_per_category": {
+      "terms": {
+        "field": "product_category.keyword"  ---> the field need to chooose for aggregation
+      },
+      "aggs": {    ----> aggregation
+        "total_sales": {
+          "sum": {                  ---------------> what operation need to be done  
+            "field": "sales_amount"
+          }
+        }
+      }
+    }
+  }
+}
+
+It will return the product category  and its sum 
+
+example:
+"book"--1000
+"pen" --2000
+
+  
