@@ -89,5 +89,37 @@ It will return the product category  and its sum
 example:
 "book"--1000
 "pen" --2000
+ ==================================
+sample response :
+{
+  "aggregations": {
+    "sales_per_category": {
+      "buckets": [
+        {
+          "key": "Electronics",
+          "doc_count": 100,
+          "total_sales": {
+            "value": 50000
+          }
+        },
+        {
+          "key": "Clothing",
+          "doc_count": 80,
+          "total_sales": {
+            "value": 35000
+          }
+        },
+        {
+          "key": "Books",
+          "doc_count": 50,
+          "total_sales": {
+            "value": 20000
+          }
+        }
+        // Other buckets for other product categories...
+      ]
+    }
+  }
+}
 
-  
+=================================================== 
