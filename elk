@@ -1,7 +1,60 @@
 dynamic mapping---> mapping not created mapping is created when the data is inserted
 
+--------------------------------------------
+Creation of mapping:
+
+PUT /Index_name
+{
+  "mappings": {
+    "properties": {
+      "age":    { "type": "integer" },  
+      "email":  { "type": "keyword"  }, 
+      "name":   { "type": "text"  }     
+    }
+  }
+}
+
+----------------------------------
+add new field to existing mapping
+
+PUT /index_name/_mapping
+{
+  "properties": {
+    "employee-id": {	
+      "type": "keyword",
+      "index": false    ----> not used for search ...but it is saved in index
+    }
+  }
+}
+
+-------
+adding date in mapping
+
+PUT /your_index_name
+{
+  "mappings": {
+    "properties": {
+      "date_field": {
+        "type": "date"
+      }
+    }
+  }
+}
+{
+  "mappings": {
+    "dynamic": "runtime",
+    "properties": {
+      "@timestamp": {
+        "type": "date"
+      }
+    }
+  }
+}
 
 
+
+MApping---> https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html
+------------------------------------------
 Match Query:
 
 Used to search the part of the sentence
