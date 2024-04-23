@@ -1,0 +1,44 @@
+data indexing:
+  putting data into the index
+      index name    unique_id
+POST /my_index/_doc/1
+{
+  "name": "John Doe",
+  "age": 30,
+  "email": "john.doe@example.com"
+}
+
+-------------------
+
+QUERY
+
+"query":
+{
+"match" ,"term" , "range" 
+{                                            -- for range           "field_name" {
+  " field_name" : "value"                                                          "gte":  /n  "lte":  }
+}
+}
+
+---------------------------------------------
+BOOL QUERY  
+
+"query":
+{
+"bool":
+{
+------
+"must" :[
+{
+    "match" , "term"  :
+{
+"field_name" :
+}
+}
+]
+---------
+"must_not":[
+
+]
+}
+}
