@@ -1,0 +1,7 @@
+open cmd in intellij ---> powersheel terminal
+
+1) git init
+2)git remote add origin https://github.com/<username>/<repository>.git    ------------>git remote add origin https://github.com/Naveenkumark22/oracle_elk_connect_springboot.git
+3)git add .
+4)git commit -m "Initial commit"
+5)git push -u origin master
