@@ -1,0 +1,53 @@
+CREATE INDEX:
+PUT /pricing_index
+
+GET MAPPING:
+GET /pricing_index/_mapping
+
+MAPPING CREATION:
+PUT /pricing_index/_mapping
+{ 
+  "properties":{
+    "pricing_pk_id":{
+      "type":"keyword"
+  },
+  "goldenkey":{
+    "type":"keyword"
+  },
+  "customerId":{
+    "type":"keyword" 
+   
+  },
+  "PricingId":{
+    "type":"keyword"
+  },
+  "custname":{
+    "type":"text",
+    "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+  }
+  },
+  "emailId":{
+    "type":"keyword" 
+  },
+  
+  "address":{
+    "type": "nested",
+    "properties": {
+      "addresLineOne":{
+        "type":"text"
+      },
+      "city":{
+        "type":"text"
+      },
+      "country":{
+        "type":"text"
+      }
+    }
+  }
+   
+}
+}
