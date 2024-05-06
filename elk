@@ -54,6 +54,14 @@ PUT /your_index_name
 
 
 MApping---> https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html
+
+
+fields-->used to declare more than two datatypes
+text ,keyword like this
+
+text----> allows full text search , partical text search , part of text search
+keyword ---> looks for exac match and text search , no spliiting involves
+
 ------------------------------------------
 Match Query:
 
