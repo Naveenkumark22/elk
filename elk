@@ -61,7 +61,7 @@ text ,keyword like this
 
 text----> allows full text search , partical text search , part of text search
 keyword ---> looks for exac match and text search , no spliiting involves
-
+ "normalizer" : "keyword_lowercase" -->converts to lowecase for keyword
 ------------------------------------------
 Match Query:
 
